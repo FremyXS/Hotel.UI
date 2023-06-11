@@ -14,3 +14,13 @@
         color: #FFFFFF;
     }
 }
+
+@media screen and (min-width: 800px) {
+    .component-button {
+    
+        button {
+            padding: 14px 0;
+            font-size: 24px;
+        }
+    }
+}

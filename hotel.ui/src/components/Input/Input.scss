@@ -24,3 +24,15 @@
         color: #CFCFCF;
     }
 }
+
+@media screen and (min-width: 800px){
+    .component-input {
+        input {
+            font-size: 24px;
+        }
+    
+        &__label {
+            font-size: 20px;
+        }
+    }
+}
