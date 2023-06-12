@@ -1,9 +1,37 @@
-.hotels-list{
-    background: rgba(0, 0, 0, 0.05);
-    padding: 0 10px;
-    height: 100vh;
+.hotels {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+        ". A .";
+    justify-items: center;
 
-    .hotel-element:not(:last-child){
-        margin-bottom: 20px;
+    &-list {
+        grid-area: A;
+        padding: 0 10px;
+        height: 100%;
+        width: 100%;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        gap: 10px;
+
+        max-width: 1440px;
+
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .hotels {
+
+        &-list {
+            padding: 0 20px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            gap: 20px;
+
+        }
     }
 }

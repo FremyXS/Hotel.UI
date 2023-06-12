@@ -3,6 +3,7 @@ import { HotelType } from "../../../../types";
 
 import './HotelElement.scss'
 import StarRating from "../../../../components/StarRating/StarRating";
+import Button from "../../../../components/Button/Button";
 
 function HotelElement({ data }: { data: HotelType }) {
     return (
@@ -17,7 +18,8 @@ function HotelElement({ data }: { data: HotelType }) {
                     Кол-во свободных номеров: <span>{data.numberRoomsAvailable}</span>
                 </div>
                 <div className="hotel-element__price">
-                    От <span>{data.minCost}</span>
+                    <p>От <span>{data.minCost} руб.</span></p>
+                    <Button type="button">Подробнее</Button>
                 </div>
             </div>
         </div>

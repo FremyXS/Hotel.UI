@@ -7,10 +7,13 @@
         border-radius: 15px 15px 0 0;
     }
 
-    &__info{
+    &__info {
         background-color: #fff;
-        padding: 0 10px;
+        padding: 15px 10px;
         border-radius: 0 0 15px 15px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
     }
 
     &__name {
@@ -27,10 +30,49 @@
     }
 
     &__price {
-        font-size: 12px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        align-items: end;
 
-        span {
-            font-weight: 700;
+        p {
+            font-size: 12px;
+
+            span {
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .hotel-element {
+    
+        &__preview {
+            height: 200px;
+        }
+    
+        &__info {
+            padding: 30px 20px;
+            border-radius: 0 0 15px 15px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 20px;
+        }
+    
+        &__name {
+            font-size: 32px;
+        }
+    
+        &__number-rooms {
+            font-size: 24px;
+        }
+    
+        &__price {
+    
+            p {
+                font-size: 24px;
+            }
         }
     }
 }
