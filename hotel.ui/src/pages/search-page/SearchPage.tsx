@@ -1,12 +1,14 @@
 import react, { ChangeEvent, useState } from 'react';
 
-import './SearchPage.scss';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { SearchDataType } from '../../types';
-import SwitchGuests from '../../components/SwitchGuests/SwitchGuests';
+
+import './SearchPage.scss';
+import { useNavigate } from 'react-router-dom';
 
 function SearchPage() {
+    const navigate = useNavigate();
     const [data, setData] = useState<SearchDataType>({
         direction: "",
         checkIn: "",
@@ -51,7 +53,7 @@ function SearchPage() {
                     onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeData(event)}/>
                 {/* <SwitchGuests
                     labelName='Гости' data={data.guests} /> */}
-                <Button type='button'>Найти</Button>
+                <Button onClick={() => navigate('hotels-list')} type='button'>Найти</Button>
             </div>
         </div>
     );
