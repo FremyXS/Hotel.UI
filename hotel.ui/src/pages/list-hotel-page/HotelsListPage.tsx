@@ -10,7 +10,7 @@ function HotelsListPage() {
 
     useEffect(() => {
         setHotelsList(HotelsMock);
-    })
+    }, [])
 
     return (
         <div className="hotels">
