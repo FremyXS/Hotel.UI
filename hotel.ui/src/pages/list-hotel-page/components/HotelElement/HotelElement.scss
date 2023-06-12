@@ -1,0 +1,36 @@
+.hotel-element {
+    border-radius: 15px;
+
+    &__preview {
+        background: #d5d4d4;
+        height: 100px;
+        border-radius: 15px 15px 0 0;
+    }
+
+    &__info{
+        background-color: #fff;
+        padding: 0 10px;
+        border-radius: 0 0 15px 15px;
+    }
+
+    &__name {
+        font-weight: 700;
+        font-size: 16px;
+    }
+
+    &__number-rooms {
+        font-size: 12px;
+
+        span {
+            font-weight: 700;
+        }
+    }
+
+    &__price {
+        font-size: 12px;
+
+        span {
+            font-weight: 700;
+        }
+    }
+}
