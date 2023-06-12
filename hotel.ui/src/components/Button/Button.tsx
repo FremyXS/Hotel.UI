@@ -4,13 +4,14 @@ import './Button.scss'
 
 interface IButton{
     children: ReactNode,
-    type: "button" | "submit" | "reset"
+    type: "button" | "submit" | "reset",
+    onClick?: () => void,
 }
 
-function Button({children, type}: IButton){
+function Button({children, type, onClick}: IButton){
     return (
         <div className="component-button">
-            <button type={type}>
+            <button onClick={onClick} type={type}>
                 {children}
             </button>
         </div>
