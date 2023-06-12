@@ -4,11 +4,14 @@ import { HotelType } from "../../../../types";
 import './HotelElement.scss'
 import StarRating from "../../../../components/StarRating/StarRating";
 import Button from "../../../../components/Button/Button";
+import Slider from "../../../../components/Slider/Slider";
 
 function HotelElement({ data }: { data: HotelType }) {
     return (
         <div className="hotel-element">
-            <div className="hotel-element__preview"></div>
+            <div className="hotel-element__preview">
+                <Slider imgUrl={data.photos}/>
+            </div>
             <div className="hotel-element__info">
                 <StarRating value={data.rating} />
                 <div className="hotel-element__name">
