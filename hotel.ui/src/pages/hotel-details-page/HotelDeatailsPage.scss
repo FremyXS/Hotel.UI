@@ -1,0 +1,9 @@
+.hotel-details{
+    &-rooms{
+        margin-top: 15px;
+        padding: 0 10px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+    }
+}

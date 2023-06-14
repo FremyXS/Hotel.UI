@@ -1,0 +1,28 @@
+.hotel-deatails-room {
+    background-color: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+
+    &__slider {
+        height: 180px;
+    }
+
+    &__info {
+        padding: 0 12px;
+        margin-top: 10px;
+    }
+
+    &__name {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &__tariffes{
+        display: flex;
+        flex-direction: column;
+        row-gap: 11px;
+        margin-top: 10px;
+        margin-bottom: 38px;
+    }
+}

@@ -1,0 +1,25 @@
+.hotel-deatails-room__tariff {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000000;
+    padding: 10px;
+
+    &-tags {
+        display: flex;
+        flex-direction: column;
+        row-gap: 6px;
+
+        &>span {
+            font-weight: 400;
+            font-size: 14px;
+        }
+    }
+
+    &-price {
+        text-align: right;
+        font-weight: 700;
+        font-size: 16px;
+        margin-top: 22px;
+        margin-bottom: 7px;
+    }
+}

@@ -12,5 +12,19 @@ export type HotelType = {
     minCost: number,
     maxCost: number,
     numberRoomsAvailable: number,
-    photos: string[]
+    photos: string[],
+    rooms?: HotelRoomType[],
+}
+
+export type HotelRoomType = {
+    id: number,
+    name: string,    
+    photos: string[],
+    tariffes: HotelRoomTariffType[]
+}
+
+export type HotelRoomTariffType = {
+    id: number,
+    tags: string[],
+    price: number,
 }

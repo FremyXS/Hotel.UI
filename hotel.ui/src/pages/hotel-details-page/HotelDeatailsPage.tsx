@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { HotelType } from "../../types";
 import HotelsMock from "../../mocks/hotels";
 import HotelDetailsInfo from "./components/HotelDetailsInfo/HotelDetailsInfo";
-import './HotelDeatailsPage.scss'
 import HotelDetailsSearch from "./components/HotelDetailsSearch/HotelDetailsSearch";
+import HotelDeatailsRoom from "./components/HotelDeatailsRoom/HotelDeatailsRoom";
+import './HotelDeatailsPage.scss'
 
 function HotelDeatailsPage() {
     const { id } = useParams();
@@ -15,7 +16,8 @@ function HotelDeatailsPage() {
         minCost: 0,
         maxCost: 0,
         numberRoomsAvailable: 0,
-        photos: []
+        photos: [],
+        rooms: []
     })
 
     useEffect(() => {
@@ -30,6 +32,11 @@ function HotelDeatailsPage() {
             rating={data.rating}
             photos={data.photos} />
             <HotelDetailsSearch />
+            <div className="hotel-details-rooms">
+                {data.rooms?.map((el, index) => 
+                    <HotelDeatailsRoom key={index} data={el}/>
+                )}
+            </div>
         </div>
     );
 }
