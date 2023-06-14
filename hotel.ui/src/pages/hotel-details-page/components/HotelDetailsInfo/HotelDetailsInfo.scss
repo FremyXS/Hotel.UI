@@ -1,0 +1,16 @@
+.hotel-details-info {
+    &__title{
+        padding: 0 10px;
+    }
+
+    &__name {
+        font-weight: 400;
+        font-size: 16px;
+    }
+
+    &__slider {
+        margin-top: 10px;
+        background: #fad0d0;
+        height: 190px;
+    }
+}
