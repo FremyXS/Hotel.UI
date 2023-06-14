@@ -4,6 +4,7 @@ import { HotelType } from "../../types";
 import HotelsMock from "../../mocks/hotels";
 import HotelDetailsInfo from "./components/HotelDetailsInfo/HotelDetailsInfo";
 import './HotelDeatailsPage.scss'
+import HotelDetailsSearch from "./components/HotelDetailsSearch/HotelDetailsSearch";
 
 function HotelDeatailsPage() {
     const { id } = useParams();
@@ -28,6 +29,7 @@ function HotelDeatailsPage() {
             name={data.name}
             rating={data.rating}
             photos={data.photos} />
+            <HotelDetailsSearch />
         </div>
     );
 }

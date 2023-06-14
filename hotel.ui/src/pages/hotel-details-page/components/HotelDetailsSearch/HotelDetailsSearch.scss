@@ -1,0 +1,19 @@
+.hotel-details-search {
+    background-color: #fff;
+    padding: 12px 15px 0;
+
+    &__title {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        word-wrap: break-word;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        column-gap: 13px;
+        margin-top: 12px;
+        margin-bottom: 6px;
+    }
+}
