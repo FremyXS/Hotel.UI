@@ -5,8 +5,11 @@ import './HotelElement.scss'
 import StarRating from "../../../../components/StarRating/StarRating";
 import Button from "../../../../components/Button/Button";
 import Slider from "../../../../components/Slider/Slider";
+import { useNavigate } from "react-router-dom";
 
 function HotelElement({ data }: { data: HotelType }) {
+    const navigate = useNavigate();
+
     return (
         <div className="hotel-element">
             <div className="hotel-element__preview">
@@ -22,7 +25,7 @@ function HotelElement({ data }: { data: HotelType }) {
                 </div>
                 <div className="hotel-element__price">
                     <p>От <span>{data.minCost} руб.</span></p>
-                    <Button type="button">Подробнее</Button>
+                    <Button type="button" onClick={() => navigate(`${data.id}`)}>Подробнее</Button>
                 </div>
             </div>
         </div>
