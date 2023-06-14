@@ -1,12 +1,16 @@
 .star-rating{
     display: flex;
+    svg {
+        height: 15px;
+        width: 15px;
+    }
 }
 
 @media screen and (min-width:800px) {
     .star-rating{
         svg {
-            height: 21px;
-            width: 21px;
+            height: 30px;
+            width: 30px;
         }
     }
 }
