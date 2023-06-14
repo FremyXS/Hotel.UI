@@ -23,3 +23,24 @@
         margin-bottom: 7px;
     }
 }
+
+@media screen and (min-width: 800px){
+    .hotel-deatails-room__tariff {
+        width: calc(50% - 11px);
+        padding: 20px;
+
+        &-tags {
+            row-gap: 12px;
+    
+            &>span {
+                font-size: 28px;
+            }
+        }
+    
+        &-price {
+            font-size: 32px;
+            margin-top: 44px;
+            margin-bottom: 14px;
+        }
+    }
+}
