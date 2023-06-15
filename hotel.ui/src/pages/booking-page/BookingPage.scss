@@ -1,4 +1,6 @@
 .booking {
+    max-width: 1200px;
+    margin: 0 auto;
     &-info {
         display: flex;
         flex-direction: column;
@@ -8,8 +10,10 @@
         border-bottom: 1px solid #d2d2d2;
     }
 
-    &-price__value {
-        font-weight: 700;
+    &-dates{
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
     }
 
     .title {
@@ -17,6 +21,7 @@
         font-size: 16px;
         line-height: 20px;
         word-wrap: break-word;
+        font-weight: 500;
     }
 
     .value {
@@ -38,12 +43,58 @@
         margin-top: 16px;
         margin-bottom: 13px;
         padding: 0 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         &__info {
             font-weight: 400;
             font-size: 14px;
             color: #555555;
             margin-top: 6px;
+        }
+    }
+}
+
+@media screen and (min-width: 800px){
+    .booking{
+        &-info {
+            row-gap: 30px;
+            padding: 20px 20px 56px;
+            border-bottom: 2px solid #d2d2d2;
+        }
+
+        &-dates{
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+        }
+
+        .title {
+            font-size: 32px;
+            line-height: 40px;
+        }
+    
+        .value {
+            font-size: 28px;
+            line-height: 34px;
+        }
+
+        &-contacts {
+            padding: 20px 20px 56px;
+            row-gap: 24px;
+        }
+
+        &-button {
+            margin-top: 32px;
+            margin-bottom: 26px;
+            padding: 0 30px;
+    
+            &__info {
+                font-size: 28px;
+                color: #555555;
+                margin-top: 12px;
+            }
         }
     }
 }

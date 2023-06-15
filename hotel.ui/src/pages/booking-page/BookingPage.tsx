@@ -42,24 +42,30 @@ function BookingPage() {
                     </div>
                 </div>
                 <div className="booking-dates">
-                    <div className="booking-dates__name title">
-                        Заезд:
+                    <div className="booking-date">
+                        <div className="booking-date__name title">
+                            Заезд:
+                        </div>
+                        <div className="booking-date__value value">
+                            13 июня 2023 14:00
+                        </div>
                     </div>
-                    <div className="booking-dates__value value">
-                        13 июня 2023 14:00
+                    <div className="booking-date">
+                        <div className="booking-date__name title">
+                            Выезд
+                        </div>
+                        <div className="booking-date__value value">
+                            13 июля 2023 12:00
+                        </div>
                     </div>
-                    <div className="booking-dates__name title">
-                        Выезд
-                    </div>
-                    <div className="booking-dates__value value">
-                        13 июля 2023 12:00
-                    </div>
+
+
                 </div>
                 <div className="booking-price">
                     <div className="booking-price__name title">
                         Цена
                     </div>
-                    <div className="booking-price__value">
+                    <div className="booking-price__value value">
                         17 999 руб.
                     </div>
                 </div>
