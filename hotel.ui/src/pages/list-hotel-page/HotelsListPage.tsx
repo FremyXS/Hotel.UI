@@ -4,8 +4,10 @@ import HotelsMock from "../../mocks/hotels";
 import HotelElement from "./components/HotelElement/HotelElement";
 import { useLocation, useNavigate } from "react-router-dom";
 import './HotelsListPage.scss'
+import { useTypedSelector } from "../../halpers/useTypedSelector";
 
 function HotelsListPage() {
+    const {direction, checkIn, checkOut, guests} = useTypedSelector(state => state.search);
     const [hotelsList, setHotelsList] = useState<HotelType[]>([]);
     const [data, setData] = useState<SearchDataType>({
         direction: null,
@@ -19,7 +21,6 @@ function HotelsListPage() {
 
     useEffect(() => {
         setHotelsList(HotelsMock);
-        console.log(queryParams);
     }, []);
 
     useEffect(() => {
@@ -36,6 +37,7 @@ function HotelsListPage() {
         });
     }, []);
 
+    console.log(direction, checkIn, checkOut, guests);
     function navigateToHotelDetails(hotelId: number) {
         navigate(`${hotelId}?checkIn=${data.checkIn}&checkOut=${data.checkOut}&guests=${data.guests}`)
     }

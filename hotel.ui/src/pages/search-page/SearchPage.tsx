@@ -6,8 +6,12 @@ import { SearchDataType } from '../../types';
 
 import './SearchPage.scss';
 import { useNavigate } from 'react-router-dom';
+import { useTypedSelector } from '../../halpers/useTypedSelector';
+import { useActions } from '../../halpers/useActions';
 
 function SearchPage() {
+    const {direction, checkIn, checkOut, guests} = useTypedSelector(state => state.search);
+    const {setTodoPage} = useActions()
     const navigate = useNavigate();
     const [data, setData] = useState<SearchDataType>({
         direction: "",
@@ -21,6 +25,13 @@ function SearchPage() {
             ...data,
             [event.target.name]: event.target.value
         })
+    }
+
+    console.log(direction, checkIn, checkOut, guests);
+
+    function onNavigateToHostelsListPage() {
+        setTodoPage(data);
+        navigate(`hotels-list`)
     }
 
     return (
@@ -54,7 +65,8 @@ function SearchPage() {
                 {/* <SwitchGuests
                     labelName='Гости' data={data.guests} /> */}
                 <Button type='button'
-                onClick={() => navigate(`hotels-list?direction=${data.direction}&checkIn=${data.checkIn}&checkOut=${data.checkOut}&guests=${data.guests}`)} 
+                // onClick={() => navigate(`hotels-list?direction=${data.direction}&checkIn=${data.checkIn}&checkOut=${data.checkOut}&guests=${data.guests}`)} 
+                onClick={() => onNavigateToHostelsListPage()}
                 >Найти</Button>
             </div>
         </div>
