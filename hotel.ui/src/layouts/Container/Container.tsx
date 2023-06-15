@@ -1,11 +1,28 @@
 import React, { ReactNode } from "react";
 
 import './Container.scss';
+import { useLocation } from "react-router-dom";
 
-function Container({children}:{children: ReactNode}){
-    return(
+function Container({ children }: { children: ReactNode }) {
+    const location = useLocation();
+
+    console.log(location)
+
+    return (
         <div className="container">
-            {children}
+            {location.pathname !== '/' &&
+                <>
+                    <div className="header">
+                        <div className="header-content">
+                            <h1>Hotel UI</h1>
+                        </div>
+                    </div>
+                    <div className="main">{children}</div>
+                </>
+            }
+            {location.pathname === '/' &&
+                children
+            }
         </div>
     );
 }
