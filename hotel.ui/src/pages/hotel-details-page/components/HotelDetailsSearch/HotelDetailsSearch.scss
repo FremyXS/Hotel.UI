@@ -12,6 +12,7 @@
     &__form {
         display: flex;
         justify-content: center;
+
         column-gap: 13px;
         margin-top: 12px;
         margin-bottom: 6px;
@@ -30,6 +31,15 @@
             column-gap: 13px;
             margin-top: 24px;
             margin-bottom: 12px;
+        }
+    }
+}
+
+@media screen and (max-width: 550px){
+    .hotel-details-search {    
+        &__form {
+            flex-direction: column;
+            gap: 13px;
         }
     }
 }
