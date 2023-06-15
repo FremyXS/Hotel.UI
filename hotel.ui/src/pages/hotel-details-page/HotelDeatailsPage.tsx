@@ -47,29 +47,34 @@ function HotelDeatailsPage() {
         });
     }, []);
 
-    function onChangeParamsData(event: ChangeEvent<HTMLInputElement>){
+    function onChangeParamsData(event: ChangeEvent<HTMLInputElement>) {
         setParamsData({
             ...paramsData,
-            [event.target.name] : event.target.value
+            [event.target.name]: event.target.value
         });
     }
 
-    function onNavigateToNowParams(){
+    function onNavigateToNowParams() {
         navigate(`?checkIn=${paramsData.checkIn}&checkOut=${paramsData.checkOut}&guests=${paramsData.guests}`)
     }
 
+    function onNavigateToBooking() {
+        navigate(`/booking`)
+    }   
+
     return (
         <div className="hotel-details">
-            <HotelDetailsInfo 
-            name={data.name}
-            rating={data.rating}
-            photos={data.photos} />
+            <HotelDetailsInfo
+                name={data.name}
+                rating={data.rating}
+                photos={data.photos} />
             <HotelDetailsSearch data={paramsData}
-            onChange={(event: ChangeEvent<HTMLInputElement>)=>onChangeParamsData(event)}
-            onClick={() => onNavigateToNowParams()} />
+                onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeParamsData(event)}
+                onClick={() => onNavigateToNowParams()} />
             <div className="hotel-details-rooms">
-                {data.rooms?.map((el, index) => 
-                    <HotelDeatailsRoom key={index} data={el}/>
+                {data.rooms?.map((el, index) =>
+                    <HotelDeatailsRoom
+                    onClick={() => onNavigateToBooking()} key={index} data={el} />
                 )}
             </div>
         </div>

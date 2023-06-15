@@ -4,7 +4,7 @@ import { HotelRoomTariffType } from "../../../../types";
 import './HotelDeatailsRoomTariff.scss';
 import Button from '../../../../components/Button/Button';
 
-function HotelDeatailsRoomTariff({ data }: { data: HotelRoomTariffType }) {
+function HotelDeatailsRoomTariff({ data, onClick }: { data: HotelRoomTariffType, onClick: () => void }) {
     return (
         <div className="hotel-deatails-room__tariff">
             <div className="hotel-deatails-room__tariff-tags">
@@ -15,7 +15,7 @@ function HotelDeatailsRoomTariff({ data }: { data: HotelRoomTariffType }) {
             <div className="hotel-deatails-room__tariff-price">
                 {data.price} руб.
             </div>
-            <Button type="button">
+            <Button onClick={onClick} type="button">
                 Забронировать
             </Button>
         </div>
