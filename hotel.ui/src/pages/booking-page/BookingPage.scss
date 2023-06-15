@@ -1,0 +1,49 @@
+.booking {
+    &-info {
+        display: flex;
+        flex-direction: column;
+        row-gap: 15px;
+        padding: 10px 10px 28px;
+        background-color: #fff;
+        border-bottom: 1px solid #d2d2d2;
+    }
+
+    &-price__value {
+        font-weight: 700;
+    }
+
+    .title {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        word-wrap: break-word;
+    }
+
+    .value {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        word-wrap: break-word;
+    }
+
+    &-contacts {
+        background-color: #fff;
+        padding: 10px 10px 28px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 12px;
+    }
+
+    &-button {
+        margin-top: 16px;
+        margin-bottom: 13px;
+        padding: 0 15px;
+
+        &__info {
+            font-weight: 400;
+            font-size: 14px;
+            color: #555555;
+            margin-top: 6px;
+        }
+    }
+}
