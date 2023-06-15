@@ -1,8 +1,8 @@
 export type SearchDataType = {
-    direction: string,
-    checkIn: string, 
-    checkOut: string,
-    guests: number
+    direction: string | null,
+    checkIn: string | null, 
+    checkOut: string | null,
+    guests: number | null
 }
 
 export type HotelType = {

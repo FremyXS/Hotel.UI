@@ -30,30 +30,32 @@ function SearchPage() {
                 <Input
                     labelName='Направление'
                     type="text"
-                    value={data.direction}
+                    value={data.direction!!}
                     name='direction'
                     onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeData(event)} />
                 <Input
                     labelName='Заезд'
                     type="date"
-                    value={data.checkIn}
+                    value={data.checkIn!!}
                     name='checkIn'
                     onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeData(event)} />
                 <Input
                     labelName='Выезд'
                     type="date"
-                    value={data.checkOut}
+                    value={data.checkOut!!}
                     name='checkOut'
                     onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeData(event)} />
                 <Input
                     labelName='Гости'
                     type="number"
-                    value={data.guests.toString()} 
+                    value={data.guests!!.toString()} 
                     name='guests'
                     onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeData(event)}/>
                 {/* <SwitchGuests
                     labelName='Гости' data={data.guests} /> */}
-                <Button onClick={() => navigate('hotels-list')} type='button'>Найти</Button>
+                <Button type='button'
+                onClick={() => navigate(`hotels-list?direction=${data.direction}&checkIn=${data.checkIn}&checkOut=${data.checkOut}&guests=${data.guests}`)} 
+                >Найти</Button>
             </div>
         </div>
     );
