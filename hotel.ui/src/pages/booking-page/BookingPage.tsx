@@ -57,8 +57,6 @@ function BookingPage() {
                             13 июля 2023 12:00
                         </div>
                     </div>
-
-
                 </div>
                 <div className="booking-price">
                     <div className="booking-price__name title">
