@@ -1,9 +1,8 @@
 import React, { ChangeEvent, useState } from "react";
-
-import './BookingPage.scss';
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { BookingContactsType } from "../../types";
+import './BookingPage.scss';
 
 function BookingPage() {
     const [contacts, setContacts] = useState<BookingContactsType>({
