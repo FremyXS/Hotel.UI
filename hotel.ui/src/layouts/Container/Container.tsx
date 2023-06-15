@@ -6,8 +6,6 @@ import { useLocation } from "react-router-dom";
 function Container({ children }: { children: ReactNode }) {
     const location = useLocation();
 
-    console.log(location)
-
     return (
         <div className="container">
             {location.pathname !== '/' &&

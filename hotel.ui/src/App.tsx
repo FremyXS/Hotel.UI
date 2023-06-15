@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import SearchPage from './pages/search-page/SearchPage';
 import HotelsListPage from './pages/list-hotel-page/HotelsListPage';
 import HotelDeatailsPage from './pages/hotel-details-page/HotelDeatailsPage';
 import BookingPage from './pages/booking-page/BookingPage';
+import './App.css';
 
 function App() {
   return (

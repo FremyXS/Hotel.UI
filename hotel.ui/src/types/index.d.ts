@@ -2,7 +2,10 @@ export type SearchDataType = {
     direction: string | null,
     checkIn: string | null, 
     checkOut: string | null,
-    guests: number | null
+    guests: number | null,
+    hotelId: number | null,
+    roomId: number | null,
+    tarriffId: number | null
 }
 
 export type HotelType = {
@@ -27,6 +30,14 @@ export type HotelRoomTariffType = {
     id: number,
     tags: string[],
     price: number,
+}
+
+export type BookingInfoType = {
+    hotelName: string,
+    hotelGeo: string,
+    roomName: string,
+    tags: string[],
+    price: number
 }
 
 export type BookingContactsType = {

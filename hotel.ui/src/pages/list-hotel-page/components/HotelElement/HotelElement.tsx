@@ -1,15 +1,11 @@
 import React from "react";
 import { HotelType } from "../../../../types";
-
-import './HotelElement.scss'
 import StarRating from "../../../../components/StarRating/StarRating";
 import Button from "../../../../components/Button/Button";
 import Slider from "../../../../components/Slider/Slider";
-import { useNavigate } from "react-router-dom";
+import './HotelElement.scss'
 
 function HotelElement({ data, onNavigate }: { data: HotelType, onNavigate: (hotelId: number) => void }) {
-    const navigate = useNavigate();
-
     return (
         <div className="hotel-element">
             <div className="hotel-element__preview">

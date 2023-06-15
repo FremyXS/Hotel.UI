@@ -3,21 +3,25 @@ import react, { ChangeEvent, useState } from 'react';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { SearchDataType } from '../../types';
-
-import './SearchPage.scss';
 import { useNavigate } from 'react-router-dom';
 import { useTypedSelector } from '../../halpers/useTypedSelector';
 import { useActions } from '../../halpers/useActions';
 
+import './SearchPage.scss';
+
 function SearchPage() {
     const {direction, checkIn, checkOut, guests} = useTypedSelector(state => state.search);
-    const {setTodoPage} = useActions()
+    const {setTodoPage} = useActions();
+    
     const navigate = useNavigate();
     const [data, setData] = useState<SearchDataType>({
-        direction: "",
-        checkIn: "",
-        checkOut: "",
-        guests: 2
+        direction: direction,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        guests: guests,
+        hotelId: null,
+        roomId: null,
+        tarriffId: null,
     })
 
     function onChangeData(event: ChangeEvent<HTMLInputElement>) {
@@ -26,8 +30,6 @@ function SearchPage() {
             [event.target.name]: event.target.value
         })
     }
-
-    console.log(direction, checkIn, checkOut, guests);
 
     function onNavigateToHostelsListPage() {
         setTodoPage(data);
@@ -65,7 +67,6 @@ function SearchPage() {
                 {/* <SwitchGuests
                     labelName='Гости' data={data.guests} /> */}
                 <Button type='button'
-                // onClick={() => navigate(`hotels-list?direction=${data.direction}&checkIn=${data.checkIn}&checkOut=${data.checkOut}&guests=${data.guests}`)} 
                 onClick={() => onNavigateToHostelsListPage()}
                 >Найти</Button>
             </div>

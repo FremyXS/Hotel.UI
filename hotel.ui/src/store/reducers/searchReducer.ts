@@ -5,7 +5,10 @@ const initialState: SearchDataType = {
     direction: "",
     checkIn: "",
     checkOut: "",
-    guests: 2
+    guests: 2,
+    hotelId: null,
+    roomId: null,
+    tarriffId: null,
 }
 
 export const searchReducer = (state = initialState, action: SearchAction) => {
@@ -13,7 +16,7 @@ export const searchReducer = (state = initialState, action: SearchAction) => {
         case SearchActionTypes.FETCH_SEARCH:
             return { ...state }
         case SearchActionTypes.SET_SEARCH:
-            return {...state, ...action.payload}
+            return { ...state, ...action.payload }
         default:
             return state
     }

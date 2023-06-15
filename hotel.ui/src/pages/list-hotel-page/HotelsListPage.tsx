@@ -1,45 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { HotelType, SearchDataType } from "../../types";
+import { HotelType } from "../../types";
 import HotelsMock from "../../mocks/hotels";
 import HotelElement from "./components/HotelElement/HotelElement";
-import { useLocation, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import './HotelsListPage.scss'
-import { useTypedSelector } from "../../halpers/useTypedSelector";
 
 function HotelsListPage() {
-    const {direction, checkIn, checkOut, guests} = useTypedSelector(state => state.search);
     const [hotelsList, setHotelsList] = useState<HotelType[]>([]);
-    const [data, setData] = useState<SearchDataType>({
-        direction: null,
-        checkIn: null,
-        checkOut: null,
-        guests: null
-    })
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
     const navigate = useNavigate();
 
     useEffect(() => {
         setHotelsList(HotelsMock);
     }, []);
 
-    useEffect(() => {
-        const direction = queryParams.get('direction');
-        const checkIn = queryParams.get('checkIn');
-        const checkOut = queryParams.get('checkOut');
-        const guests = queryParams.get('guests');
-
-        setData({
-            direction: direction,
-            checkIn: checkIn,
-            checkOut: checkOut,
-            guests: Number(guests)
-        });
-    }, []);
-
-    console.log(direction, checkIn, checkOut, guests);
     function navigateToHotelDetails(hotelId: number) {
-        navigate(`${hotelId}?checkIn=${data.checkIn}&checkOut=${data.checkOut}&guests=${data.guests}`)
+        navigate(`${hotelId}`)
     }
 
     return (

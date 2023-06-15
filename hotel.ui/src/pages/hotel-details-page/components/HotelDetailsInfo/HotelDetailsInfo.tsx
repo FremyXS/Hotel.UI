@@ -1,8 +1,8 @@
 import React from "react";
-
-import './HotelDetailsInfo.scss';
 import StarRating from "../../../../components/StarRating/StarRating";
 import Slider from '../../../../components/Slider/Slider';
+
+import './HotelDetailsInfo.scss';
 
 interface IHotelDetailsInfo {
     name: string,

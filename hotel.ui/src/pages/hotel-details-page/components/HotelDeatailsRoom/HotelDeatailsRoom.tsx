@@ -4,7 +4,7 @@ import Slider from "../../../../components/Slider/Slider";
 import HotelDeatailsRoomTariff from "../HotelDeatailsRoomTariff/HotelDeatailsRoomTariff";
 import './HotelDeatailsRoom.scss';
 
-function HotelDeatailsRoom ({data, onClick}:{data: HotelRoomType, onClick: () => void}) {
+function HotelDeatailsRoom ({data, onClick}:{data: HotelRoomType, onClick: (roomId: number, tariffId: number) => void}) {
     return (
         <div className="hotel-deatails-room">
             <div className="hotel-deatails-room__slider">
@@ -19,7 +19,7 @@ function HotelDeatailsRoom ({data, onClick}:{data: HotelRoomType, onClick: () =>
                         <HotelDeatailsRoomTariff 
                         key={`HotelDeatailsRoomTariff ${index}`}
                         data={el}
-                        onClick={onClick} />
+                        onClick={() => onClick(data.id, el.id)} />
                     )}
                 </div>
             </div>

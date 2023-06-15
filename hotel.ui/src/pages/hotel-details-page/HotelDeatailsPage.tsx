@@ -1,22 +1,29 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { HotelType, SearchDataType } from "../../types";
 import HotelsMock from "../../mocks/hotels";
 import HotelDetailsInfo from "./components/HotelDetailsInfo/HotelDetailsInfo";
 import HotelDetailsSearch from "./components/HotelDetailsSearch/HotelDetailsSearch";
 import HotelDeatailsRoom from "./components/HotelDeatailsRoom/HotelDeatailsRoom";
+import { useTypedSelector } from "../../halpers/useTypedSelector";
+import { useActions } from "../../halpers/useActions";
 import './HotelDeatailsPage.scss'
 
 function HotelDeatailsPage() {
+    const { direction, checkIn, checkOut, guests } = useTypedSelector(state => state.search);
+    const { setTodoPage } = useActions();
+
     const { id } = useParams();
-    const location = useLocation();
-    const queryParams = new URLSearchParams(location.search);
     const navigate = useNavigate();
+
     const [paramsData, setParamsData] = useState<SearchDataType>({
-        direction: null,
-        checkIn: null,
-        checkOut: null,
-        guests: null
+        direction: direction,
+        checkIn: checkIn,
+        checkOut: checkOut,
+        guests: guests,
+        hotelId: null,
+        roomId: null,
+        tarriffId: null,
     })
     const [data, setData] = useState<HotelType>({
         id: 0,
@@ -34,19 +41,6 @@ function HotelDeatailsPage() {
         setData(hotel!!);
     }, []);
 
-    useEffect(() => {
-        const checkIn = queryParams.get('checkIn');
-        const checkOut = queryParams.get('checkOut');
-        const guests = queryParams.get('guests');
-
-        setParamsData({
-            ...paramsData,
-            checkIn: checkIn,
-            checkOut: checkOut,
-            guests: Number(guests)
-        });
-    }, []);
-
     function onChangeParamsData(event: ChangeEvent<HTMLInputElement>) {
         setParamsData({
             ...paramsData,
@@ -54,13 +48,15 @@ function HotelDeatailsPage() {
         });
     }
 
-    function onNavigateToNowParams() {
-        navigate(`?checkIn=${paramsData.checkIn}&checkOut=${paramsData.checkOut}&guests=${paramsData.guests}`)
+    function onSetNewParams() {
+        setTodoPage(paramsData);
     }
 
-    function onNavigateToBooking() {
+    function onNavigateToBooking(roomId: number, tariffId: number) {
+        const hotelId = id;
+        setTodoPage({ ...paramsData, hotelId: Number(hotelId), roomId: roomId, tarriffId: tariffId })
         navigate(`/booking`)
-    }   
+    }
 
     return (
         <div className="hotel-details">
@@ -70,11 +66,12 @@ function HotelDeatailsPage() {
                 photos={data.photos} />
             <HotelDetailsSearch data={paramsData}
                 onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeParamsData(event)}
-                onClick={() => onNavigateToNowParams()} />
+                onClick={() => onSetNewParams()} />
             <div className="hotel-details-rooms">
                 {data.rooms?.map((el, index) =>
                     <HotelDeatailsRoom
-                    onClick={() => onNavigateToBooking()} key={index} data={el} />
+                        onClick={(roomId: number, tariffId: number) => onNavigateToBooking(roomId, tariffId)}
+                        key={index} data={el} />
                 )}
             </div>
         </div>
