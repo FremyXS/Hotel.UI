@@ -9,14 +9,12 @@ import BookingPage from './pages/booking-page/BookingPage';
 
 function App() {
   return (
-    <BrowserRouter>
       <Routes>
         <Route path='/' element={<SearchPage />} />
         <Route path='/hotels-list' element={<HotelsListPage />} />
         <Route path='/hotels-list/:id' element={<HotelDeatailsPage />} />
         <Route path='/booking' element={<BookingPage />} />
       </Routes>
-    </BrowserRouter>
   );
 }
 
