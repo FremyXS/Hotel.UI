@@ -28,3 +28,12 @@ export type HotelRoomTariffType = {
     tags: string[],
     price: number,
 }
+
+export type BookingContactsType = {
+    firstName: string,
+    lastName: string,
+    passportSeries: number,
+    passportNumber: number,
+    telephon: string,
+    email: string
+}

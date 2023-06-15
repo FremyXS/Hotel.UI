@@ -1,10 +1,27 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 
 import './BookingPage.scss';
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
+import { BookingContactsType } from "../../types";
 
 function BookingPage() {
+    const [contacts, setContacts] = useState<BookingContactsType>({
+        firstName: "",
+        lastName: "",
+        passportSeries: 7777,
+        passportNumber: 777777,
+        telephon: "",
+        email: ""
+    });
+
+    function onChangeContacts(event: ChangeEvent<HTMLInputElement>) {
+        setContacts({
+            ...contacts,
+            [event.target.name]: event.target.value
+        })
+    }
+
     return (
         <div className="booking">
             <div className="booking-info">
@@ -51,12 +68,37 @@ function BookingPage() {
                 <div className="booking-contacts__title title">
                     Контактные данные
                 </div>
-                <Input labelName="Имя" />
-                <Input labelName="Фамилия" />
-                <Input labelName="Серия" />
-                <Input labelName="Номер Паспорта" />
-                <Input labelName="Номер Телефона" />
-                <Input labelName="Email" />
+                <Input
+                    labelName="Имя"
+                    type="text"
+                    value={contacts.firstName}
+                    name="firstName"
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeContacts(event)} />
+                <Input labelName="Фамилия"
+                    type="text"
+                    value={contacts.lastName}
+                    name="lastName"
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeContacts(event)} />
+                <Input labelName="Серия"
+                    type="text"
+                    value={contacts.passportSeries.toString()}
+                    name="passportSeries"
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeContacts(event)} />
+                <Input labelName="Номер Паспорта"
+                    type="text"
+                    value={contacts.passportNumber.toString()}
+                    name="passportNumber"
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeContacts(event)} />
+                <Input labelName="Номер Телефона"
+                    type="text"
+                    value={contacts.telephon}
+                    name="telephon"
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeContacts(event)} />
+                <Input labelName="Email"
+                    type="email"
+                    value={contacts.email}
+                    name="email"
+                    onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeContacts(event)} />
             </div>
             <div className="booking-button">
                 <Button type="button" >
