@@ -1,10 +1,11 @@
 import React, { ChangeEvent, useState } from "react";
 
 import BookingHistorySearch from "./components/BookingHistorySearch/BookingHistorySearch";
-import './BookingHistoryPage.scss';
 import { BookingHistory } from "../../types";
 import BookingHistoryElement from "./components/BookingHistoryElement/BookingHistoryElement";
-import BookingHistoryMock from "../../mocks/bookingHistory";
+import BookingHistoryCurrent from "./components/BookingHistoryCurrent/BookingHistoryCurrent";
+import { BookingCurrent, BookingHistoryMock } from "../../mocks/bookingHistory";
+import './BookingHistoryPage.scss';
 
 function BookingHistoryPage() {
     const [passport, setPassport] = useState<{ serial: string, number: string }>({
@@ -26,6 +27,17 @@ function BookingHistoryPage() {
         setHistoryOrder(
             BookingHistoryMock || []
         )
+        setCurrentOrder(
+            BookingCurrent || null
+        )
+    }
+
+    function onClickCancelReservation(){
+        console.log('Бронь отменена')
+    }
+
+    function onClickCallCleaningService(){
+        console.log('Вызван клиниг')
     }
 
     return (
@@ -38,9 +50,14 @@ function BookingHistoryPage() {
                 passport={passport}
                 onClick={onClickSearch} />
 
+            {currentOrder &&
+                <BookingHistoryCurrent data={currentOrder}
+                onClickCancelReservation={onClickCancelReservation}
+                onClickCallCleaningService={onClickCallCleaningService} />
+            }
             <div className="booking-history-list">
                 {historyOrder && historyOrder.map((el, index) =>
-                    <BookingHistoryElement key={index} data={el}/>
+                    <BookingHistoryElement key={index} data={el} />
                 )}
             </div>
         </div>

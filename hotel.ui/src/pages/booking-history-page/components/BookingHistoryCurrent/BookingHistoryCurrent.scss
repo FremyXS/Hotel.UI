@@ -1,0 +1,29 @@
+.booking-history-current{
+    background: #fff;
+    border-radius: 15px;
+    padding: 15px 10px 25px;
+    
+    .title {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .subtitle {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+    }
+
+    &__room{
+        margin-top: 15px;
+    }
+
+    &__price{
+        text-align: right;
+        font-weight: 700;
+        color: #1D0043;
+        margin-top: 15px;
+        margin-bottom: 20px;
+    }
+}

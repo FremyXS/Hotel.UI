@@ -6,7 +6,12 @@ enum BookingHistoryStatus{
     inMotion = "В действии"
 }
 
-const BookingHistoryMock: BookingHistory[] = [
+enum BookingCurrentStatus{
+    canСanceled = "Можно отменить",
+    cannotUndone = "Нельзя отменить"
+}
+
+export const BookingHistoryMock: BookingHistory[] = [
     {
         hotelId: 1,
         name: 'Отель 1',
@@ -51,6 +56,16 @@ const BookingHistoryMock: BookingHistory[] = [
             price: 18888,
         }
     }
-]
+];
 
-export default BookingHistoryMock;
+export const BookingCurrent : BookingHistory = {
+    hotelId: 1,
+        name: 'Отель 1',
+        address: 'Москва',
+        status: BookingCurrentStatus.canСanceled,
+        room: {
+            id: 1,
+            name: 'Комната 12',
+            price: 18888,
+        }
+}
