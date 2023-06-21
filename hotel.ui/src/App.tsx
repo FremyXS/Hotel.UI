@@ -5,6 +5,7 @@ import SearchPage from './pages/search-page/SearchPage';
 import HotelsListPage from './pages/list-hotel-page/HotelsListPage';
 import HotelDeatailsPage from './pages/hotel-details-page/HotelDeatailsPage';
 import BookingPage from './pages/booking-page/BookingPage';
+import BookingHistoryPage from './pages/booking-history-page/BookingHistoryPage';
 import './App.css';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Route path='/hotels-list' element={<HotelsListPage />} />
         <Route path='/hotels-list/:id' element={<HotelDeatailsPage />} />
         <Route path='/booking' element={<BookingPage />} />
+        <Route path='/booking-history' element={<BookingHistoryPage/>} />
       </Routes>
   );
 }

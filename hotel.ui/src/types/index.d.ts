@@ -48,3 +48,14 @@ export type BookingContactsType = {
     telephon: string,
     email: string
 }
+
+export type BookingHistory = {
+    hotelId: number,
+    name: string,
+    address: string,
+    room: {
+        id: number,
+        name: string,
+        price: number,
+    }
+}
