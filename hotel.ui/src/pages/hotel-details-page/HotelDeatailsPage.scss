@@ -9,6 +9,10 @@
         flex-direction: column;
         row-gap: 15px;
     }
+
+    .ymaps-2-1-79-map{
+        z-index: -1;
+    }
 }
 
 @media screen and (min-width: 800px) {
