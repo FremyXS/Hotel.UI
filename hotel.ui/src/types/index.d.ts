@@ -53,9 +53,16 @@ export type BookingHistory = {
     hotelId: number,
     name: string,
     address: string,
+    status: string,
     room: {
         id: number,
         name: string,
         price: number,
     }
+}
+
+export enum BookingHistoryStatus{
+    cancelled = "Бронь отменена",
+    isOver = "Время брони закончилось",
+    inMotion = "В действии"
 }

@@ -6,10 +6,11 @@ import Button from "../../../../components/Button/Button";
 
 interface IBookingHistorySearch{
     passport: {serial: string, number: string},
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void,
+    onClick: () => void
 }
 
-function BookingHistorySearch({passport, onChange}: IBookingHistorySearch) {
+function BookingHistorySearch({passport, onChange, onClick}: IBookingHistorySearch) {
 
     return (
         <div className="booking-history-search">
@@ -25,7 +26,7 @@ function BookingHistorySearch({passport, onChange}: IBookingHistorySearch) {
             name="number"
             value={passport.number}
             onChange={onChange}/>
-            <Button type={"button"}>
+            <Button type={"button"} onClick={onClick}>
                 Просмотр истории
             </Button>
         </div>
