@@ -8,8 +8,12 @@ import HotelDeatailsRoom from "./components/HotelDeatailsRoom/HotelDeatailsRoom"
 import { useTypedSelector } from "../../halpers/useTypedSelector";
 import { useActions } from "../../halpers/useActions";
 import './HotelDeatailsPage.scss'
+import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+import windowDimensions from "../../commons/useWindowDimensions";
 
 function HotelDeatailsPage() {
+    const { height, width } = windowDimensions();
+    
     const { direction, checkIn, checkOut, guests } = useTypedSelector(state => state.search);
     const { setTodoPage } = useActions();
 
@@ -64,6 +68,20 @@ function HotelDeatailsPage() {
                 name={data.name}
                 rating={data.rating}
                 photos={data.photos} />
+            <YMaps>
+                <Map
+                width={'100%'}
+                height={width < 800? '200px' : '500px'}
+                    defaultState={{
+                        center: [55.75, 37.57],
+                        zoom: 11,
+                        controls: ["zoomControl", "fullscreenControl"],
+                    }}
+                    modules={["control.ZoomControl", "control.FullscreenControl"]}
+                >
+                    <Placemark defaultGeometry={[55.75, 37.57]} />
+                </Map>
+            </YMaps>;
             <HotelDetailsSearch data={paramsData}
                 onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeParamsData(event)}
                 onClick={() => onSetNewParams()} />
