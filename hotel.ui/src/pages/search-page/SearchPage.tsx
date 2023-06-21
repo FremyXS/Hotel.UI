@@ -3,7 +3,7 @@ import react, { ChangeEvent, useState } from 'react';
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
 import { SearchDataType } from '../../types';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTypedSelector } from '../../halpers/useTypedSelector';
 import { useActions } from '../../halpers/useActions';
 
@@ -69,6 +69,9 @@ function SearchPage() {
                 <Button type='button'
                 onClick={() => onNavigateToHostelsListPage()}
                 >Найти</Button>
+                <Link className='search-page-window__link' to='/booking-history'>
+                    Или посмотреть историю?
+                </Link>
             </div>
         </div>
     );

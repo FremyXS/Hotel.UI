@@ -28,6 +28,17 @@
             margin-bottom: 16px;
         }
 
+        &__link {
+            margin-top: 10px;
+            color: #808080;
+            font-size: 12px;
+
+            &:hover, &:active{
+                cursor: pointer;
+                color: #1D0043;
+            }
+        }
+
         .component-input:not(:last-child) {
             margin-bottom: 9px;
         }
@@ -41,7 +52,7 @@
 @media screen and (min-width: 800px) {
     .search-page {
         padding: 0 60px;
-        
+
         &-window {
             max-width: 800px;
             padding: 32px 32px 44px;
@@ -54,9 +65,15 @@
             .component-input:not(:last-child) {
                 margin-bottom: 18px;
             }
-    
+
             .component-button {
                 margin-top: 84px;
+            }
+
+            &__link {
+                margin-top: 20px;
+                color: #808080;
+                font-size: 24px;
             }
         }
     }
