@@ -1,0 +1,21 @@
+FROM node:16.17.1
+
+# set working directory
+WORKDIR /hotel.ui
+
+# add `/app/node_modules/.bin` to $PATH
+# ENV PATH /hotel.ui/node_modules/.bin:$PATH
+
+# install app dependencies
+COPY package.json ./
+COPY package-lock.json ./
+
+RUN npm install
+
+# add app
+COPY . .
+
+RUN npm run build
+
+# start app
+CMD ["npm", "start"]

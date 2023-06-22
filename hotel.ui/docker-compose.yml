@@ -1,0 +1,19 @@
+version: '3'
+services:
+  app:
+    container_name: hotel.ui
+    build:
+      context: .
+      dockerfile: Docker
+    volumes:
+      - '.:/hotel.ui'
+      - '/hotel.ui/node_modules'
+    ports:
+      - '3000:3000'
+# version: '3'
+# services:
+#   app:
+#     container_name: app
+#     build: .
+#     ports:
+#       - '3000:3000'
