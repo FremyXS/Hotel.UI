@@ -5,14 +5,22 @@ export type SearchType = {
 }
 
 export type ParamsDataType = {
-    direction: string | null,
+    hotelId: number | null,
+    hotelName: string,
+    address: string,
+    city: string,
+    longDescription: string,
+    HotelLatitude: number | null, 
+    HotelLongitude: number | null,
+
+    roomId: number | null,
+    class: number,
+    price: number,
+    modifiers: string[],
+    floor: number,
+
     checkIn: string | null,
     checkOut: string | null,
-    hotelId: number | null,
-    roomId: number | null,
-    tarriffId: number | null,
-    HotelLatitude: number | null, 
-    HotelLongitude: number | null
 }
 
 export type HotelType = {

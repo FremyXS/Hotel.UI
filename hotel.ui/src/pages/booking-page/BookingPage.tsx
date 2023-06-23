@@ -3,11 +3,10 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { BookingContactsType, BookingInfoType } from "../../types";
 import { useTypedSelector } from "../../halpers/useTypedSelector";
-import HotelsMock from "../../mocks/hotels";
 import './BookingPage.scss';
 
 function BookingPage() {
-    const { direction, checkIn, checkOut, hotelId, roomId, tarriffId } = useTypedSelector(state => state.search);
+    const { city, checkIn, checkOut, hotelId, roomId } = useTypedSelector(state => state.search);
     const [contacts, setContacts] = useState<BookingContactsType>({
         firstName: "",
         lastName: "",
@@ -55,7 +54,7 @@ function BookingPage() {
                         {info.hotelName}
                     </div>
                     <div className="booking-hotel__geo value">
-                        Россия, {direction}
+                        Россия, {city}
                     </div>
                 </div>
                 <div className="booking-room">

@@ -15,7 +15,7 @@ function SearchPage() {
 
     const navigate = useNavigate();
     const [data, setData] = useState<SearchType>({
-        direction: search.direction,
+        direction: search.city,
         checkIn: search.checkIn,
         checkOut: search.checkOut,
     })

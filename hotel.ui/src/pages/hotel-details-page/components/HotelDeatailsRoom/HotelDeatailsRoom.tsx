@@ -4,7 +4,7 @@ import Slider from "../../../../components/Slider/Slider";
 import Button from "../../../../components/Button/Button";
 import './HotelDeatailsRoom.scss';
 
-function HotelDeatailsRoom({ data, onClick }: { data: HotelRoomType, onClick: (roomId: number) => void }) {
+function HotelDeatailsRoom({ data, onClick }: { data: HotelRoomType, onClick: (room: HotelRoomType) => void }) {
     return (
         <div className="hotel-deatails-room">
             <div className="hotel-deatails-room__slider">
@@ -29,7 +29,7 @@ function HotelDeatailsRoom({ data, onClick }: { data: HotelRoomType, onClick: (r
                     )}
                 </div>
                 <Button type="button"
-                onClick={() => onClick(data.number)}>
+                onClick={() => onClick(data)}>
                     Заказать
                 </Button>
             </div>

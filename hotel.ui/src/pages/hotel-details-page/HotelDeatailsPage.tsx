@@ -46,10 +46,21 @@ function HotelDeatailsPage() {
     //     setTodoPage(paramsData);
     // }
 
-    function onNavigateToBooking(roomId: number) {
+    function onNavigateToBooking(room: HotelRoomType) {
         setTodoPage({
             ...search,
-            hotelId: Number(hotelId), roomId: roomId
+            hotelId: Number(hotelId),
+            hotelName: hotel?.name!!,
+            address: hotel?.address!!,
+            city: hotel?.city!!,
+            longDescription: hotel?.longDescription!!,
+            HotelLatitude: hotel?.coordinates.latitude!!,
+            HotelLongitude: hotel?.coordinates.longitude!!,
+            roomId: room.number,
+            class: room.class,
+            price: room.price,
+            modifiers: room.modifiers,
+            floor: room.floor,
         })
         navigate(`/booking`)
     }
@@ -82,7 +93,7 @@ function HotelDeatailsPage() {
             <div className="hotel-details-rooms">
                 {rooms?.map((el, index) =>
                     <HotelDeatailsRoom
-                        onClick={(roomId: number) => onNavigateToBooking(roomId)}
+                        onClick={(room: HotelRoomType) => onNavigateToBooking(room)}
                         key={index} data={el} />
                 )}
             </div>

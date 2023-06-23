@@ -33,3 +33,20 @@ export const getRoomsByHotel = async (params: {HotelLatitude: number, HotelLongi
         return false
     }
 }
+
+export const sendBooking = async (
+    params: {
+        PassportNumber: string,
+        HotelId: number,
+        RoomId: number
+        Longitude: number,
+        Latitude: number,
+        BookingStartDate: string,
+        BookingEndDate: string
+    }
+) => {
+    await api().post('booking/add', {},
+    {
+        params: params
+    })
+}
