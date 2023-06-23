@@ -28,6 +28,9 @@ function HotelDeatailsRoom({ data, onClick }: { data: HotelRoomType, onClick: (r
                         </div>
                     )}
                 </div>
+                <div className="hotel-deatails-room__price">
+                    {data.price} руб.
+                </div>
                 <Button type="button"
                 onClick={() => onClick(data)}>
                     Заказать

@@ -3,10 +3,11 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { BookingContactsType, BookingInfoType } from "../../types";
 import { useTypedSelector } from "../../halpers/useTypedSelector";
+import { sendBooking } from "../../api/gate-way";
 import './BookingPage.scss';
 
 function BookingPage() {
-    const { city, checkIn, checkOut, hotelId, roomId } = useTypedSelector(state => state.search);
+    const { search } = useTypedSelector(state => state);
     const [contacts, setContacts] = useState<BookingContactsType>({
         firstName: "",
         lastName: "",
@@ -16,27 +17,7 @@ function BookingPage() {
         email: ""
     });
 
-    const [info, setInfo] = useState<BookingInfoType>({
-        hotelName: "",
-        hotelGeo: "",
-        roomName: "",
-        tags: [],
-        price: 0
-    });
-
     useEffect(() => {
-        // const hotel = HotelsMock.find((el) => el.id === hotelId);
-        // const room = hotel?.rooms?.find((el) => el.id === roomId);
-        // const tariff = room?.tariffes.find((el) => el.id === tarriffId);
-
-        // setInfo({
-        //     ...info,
-        //     hotelName: hotel!!.name,
-        //     hotelGeo: direction!!,
-        //     roomName: room?.name!!,
-        //     tags: tariff?.tags!!,
-        //     price: tariff?.price!!
-        // });
     }, []);
 
     function onChangeContacts(event: ChangeEvent<HTMLInputElement>) {
@@ -46,23 +27,41 @@ function BookingPage() {
         })
     }
 
+    function onClickBooking() {
+        sendBooking({
+            PassportNumber: `${contacts.passportNumber}${contacts.passportSeries}`,
+            HotelId: search.hotelId!!,
+            RoomId: search.roomId!!,
+            Longitude: search.HotelLongitude!!,
+            Latitude: search.HotelLatitude!!,
+            BookingStartDate: search.checkIn!!,
+            BookingEndDate: search.checkOut!!,
+        })
+    }
+
     return (
         <div className="booking">
             <div className="booking-info">
                 <div className="booking-hotel">
                     <div className="booking-hotel__name title">
-                        {info.hotelName}
+                        {search.hotelName}
                     </div>
                     <div className="booking-hotel__geo value">
-                        Россия, {city}
+                        {search.city}, {search.address}
                     </div>
                 </div>
                 <div className="booking-room">
                     <div className="booking-room__name title">
-                        {info.roomName}
+                        Комната под номером {search.roomId}
+                    </div>
+                    <div className="value">
+                        Тип {search.class}
+                    </div>
+                    <div className="value">
+                        Этаж {search.floor}
                     </div>
                     <div className="booking-room__tags value">
-                        {info.tags.join(', ')}
+                        {search.modifiers.join(', ')}
                     </div>
                 </div>
                 <div className="booking-dates">
@@ -71,7 +70,7 @@ function BookingPage() {
                             Заезд:
                         </div>
                         <div className="booking-date__value value">
-                            {checkIn} 14:00
+                            {search.checkIn} 14:00
                         </div>
                     </div>
                     <div className="booking-date">
@@ -79,7 +78,7 @@ function BookingPage() {
                             Выезд
                         </div>
                         <div className="booking-date__value value">
-                            {checkOut} 12:00
+                            {search.checkOut} 12:00
                         </div>
                     </div>
                 </div>
@@ -88,7 +87,7 @@ function BookingPage() {
                         Цена
                     </div>
                     <div className="booking-price__value value">
-                        {info.price} руб.
+                        {search.price} руб.
                     </div>
                 </div>
             </div>
@@ -129,7 +128,7 @@ function BookingPage() {
                     onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeContacts(event)} />
             </div>
             <div className="booking-button">
-                <Button type="button" >
+                <Button type="button" onClick={() => onClickBooking()}>
                     Забронировать
                 </Button>
                 <div className="booking-button__info">или позвоните по номеру +7 (111) 111 11-11</div>

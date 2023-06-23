@@ -45,8 +45,15 @@ export const sendBooking = async (
         BookingEndDate: string
     }
 ) => {
-    await api().post('booking/add', {},
-    {
-        params: params
-    })
+    try{
+        await api().get('booking/add',
+        {
+            params: params
+        })
+
+        return true;
+    }
+    catch{
+        return false;
+    }
 }
