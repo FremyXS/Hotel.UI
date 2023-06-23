@@ -3,7 +3,7 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { BookingContactsType, BookingInfoType } from "../../types";
 import { useTypedSelector } from "../../halpers/useTypedSelector";
-import { sendBooking } from "../../api/gate-way";
+import { sendAddBooking } from "../../api/gate-way";
 import './BookingPage.scss';
 
 function BookingPage() {
@@ -28,7 +28,7 @@ function BookingPage() {
     }
 
     function onClickBooking() {
-        sendBooking({
+        sendAddBooking({
             PassportNumber: `${contacts.passportNumber}${contacts.passportSeries}`,
             HotelId: search.hotelId!!,
             RoomId: search.roomId!!,
