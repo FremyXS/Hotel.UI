@@ -20,8 +20,9 @@
         &-rooms{
             margin-top: 30px;
             display: flex;
-            flex-direction: column;
-            row-gap: 30px;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 30px;
         }
     }
 }

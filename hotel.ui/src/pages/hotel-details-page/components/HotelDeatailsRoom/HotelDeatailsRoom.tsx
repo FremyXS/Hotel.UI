@@ -8,7 +8,7 @@ function HotelDeatailsRoom({ data, onClick }: { data: HotelRoomType, onClick: (r
     return (
         <div className="hotel-deatails-room">
             <div className="hotel-deatails-room__slider">
-                <Slider imgUrl={[]} />
+                <Slider imgUrl={data.imageUrls} />
             </div>
             <div className="hotel-deatails-room__info">
                 <div className="hotel-deatails-room__name">
