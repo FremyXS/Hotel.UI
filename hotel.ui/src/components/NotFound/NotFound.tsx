@@ -1,8 +1,10 @@
 import React from "react";
 
+import './NotFound.scss'
+
 function NotFound(){
     return(
-        <div>Не Найден</div>
+        <div className="not-found">Не Найден</div>
     )
 }
 

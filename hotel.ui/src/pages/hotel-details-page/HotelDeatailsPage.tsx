@@ -8,9 +8,9 @@ import windowDimensions from "../../commons/useWindowDimensions";
 import { getHotelDeatil, getRoomsByHotel } from "../../api/gate-way";
 import HotelDetailsSearch from "./components/HotelDetailsSearch/HotelDetailsSearch";
 import { useTypedSelector } from "../../halpers/useTypedSelector";
-import './HotelDeatailsPage.scss'
 import HotelDeatailsRoom from "./components/HotelDeatailsRoom/HotelDeatailsRoom";
 import NotFound from "../../components/NotFound/NotFound";
+import './HotelDeatailsPage.scss'
 
 function HotelDeatailsPage() {
     const [isLoadPage, setIsLoadPage] = useState<boolean>(true);
