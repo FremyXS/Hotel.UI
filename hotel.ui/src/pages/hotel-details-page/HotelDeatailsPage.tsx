@@ -10,6 +10,7 @@ import HotelDetailsSearch from "./components/HotelDetailsSearch/HotelDetailsSear
 import { useTypedSelector } from "../../halpers/useTypedSelector";
 import './HotelDeatailsPage.scss'
 import HotelDeatailsRoom from "./components/HotelDeatailsRoom/HotelDeatailsRoom";
+import NotFound from "../../components/NotFound/NotFound";
 
 function HotelDeatailsPage() {
     const [isLoadPage, setIsLoadPage] = useState<boolean>(true);
@@ -67,36 +68,49 @@ function HotelDeatailsPage() {
 
     return (
         <div className="hotel-details">
-            <HotelDetailsInfo
-                name={hotel?.name!!}
-                rating={hotel?.rating!!}
-                photos={hotel?.photos!!}
-                description={hotel?.longDescription!!} />
-            <YMaps>
-                <Map
-                    width={'100%'}
-                    height={width < 800 ? '200px' : '500px'}
-                    defaultState={{
-                        center: [hotel?.coordinates.latitude!!, hotel?.coordinates.longitude!!],
-                        zoom: 11,
-                        controls: ["zoomControl", "fullscreenControl"],
-                    }}
-                    modules={["control.ZoomControl", "control.FullscreenControl"]}
-                >
-                    <Placemark defaultGeometry={[hotel?.coordinates.latitude!!, hotel?.coordinates.longitude!!]} />
-                </Map>
-            </YMaps>
-            <HotelDetailsSearch data={search}
-            // onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeParamsData(event)}
-            // onClick={() => onSetNewParams()} 
-            />
-            <div className="hotel-details-rooms">
-                {rooms?.map((el, index) =>
-                    <HotelDeatailsRoom
-                        onClick={(room: HotelRoomType) => onNavigateToBooking(room)}
-                        key={index} data={el} />
-                )}
-            </div>
+            {isLoadPage ?
+                <>
+                    <HotelDetailsInfo
+                        name={hotel?.name!!}
+                        rating={hotel?.rating!!}
+                        photos={hotel?.photos!!}
+                        description={hotel?.longDescription!!} />
+                    <YMaps>
+                        <Map
+                            width={'100%'}
+                            height={width < 800 ? '200px' : '500px'}
+                            defaultState={{
+                                center: [hotel?.coordinates.latitude!!, hotel?.coordinates.longitude!!],
+                                zoom: 11,
+                                controls: ["zoomControl", "fullscreenControl"],
+                            }}
+                            modules={["control.ZoomControl", "control.FullscreenControl"]}
+                        >
+                            <Placemark defaultGeometry={[hotel?.coordinates.latitude!!, hotel?.coordinates.longitude!!]} />
+                        </Map>
+                    </YMaps>
+                    <HotelDetailsSearch data={search}
+                    // onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeParamsData(event)}
+                    // onClick={() => onSetNewParams()} 
+                    />
+                    <div className="hotel-details-rooms">
+                        {isLoadRooms ?
+                            <>
+                                {rooms?.map((el, index) =>
+                                    <HotelDeatailsRoom
+                                        onClick={(room: HotelRoomType) => onNavigateToBooking(room)}
+                                        key={index} data={el} />
+                                )}
+                            </>
+                            :
+                            <NotFound />
+                        }
+                    </div>
+                </>
+                :
+                <NotFound />
+            }
+
         </div>
     );
 

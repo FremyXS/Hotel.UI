@@ -4,6 +4,7 @@ import HotelElement from "./components/HotelElement/HotelElement";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllHostels } from "../../api/gate-way";
 import './HotelsListPage.scss'
+import NotFound from "../../components/NotFound/NotFound";
 
 function HotelsListPage() {
     const [hotelsList, setHotelsList] = useState<HotelType[]>([]);
@@ -22,21 +23,25 @@ function HotelsListPage() {
 
     return (
         <div className="hotels">
-            <div className="hotels-list">
-                {hotelsList.map((el, index) =>
-                    <HotelElement key={index} data={el} onNavigate={navigateToHotelDetails} />
-                )}
-            </div>
+            {isLoadPage ?
+                <div className="hotels-list">
+                    {hotelsList.map((el, index) =>
+                        <HotelElement key={index} data={el} onNavigate={navigateToHotelDetails} />
+                    )}
+                </div>
+                :
+                <NotFound />
+            }
         </div>
     );
 
     async function loadListHotelsAsync() {
         const data = await getAllHostels(direction!!)
 
-        if(data === false){
+        if (data === false) {
             setIsLoadPage(false)
         }
-        else{
+        else {
             setHotelsList(data);
         }
 
