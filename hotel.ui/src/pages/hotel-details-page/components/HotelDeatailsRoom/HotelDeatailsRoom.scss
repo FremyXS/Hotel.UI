@@ -10,6 +10,7 @@
     &__info {
         padding: 0 12px;
         margin-top: 10px;
+        margin-bottom: 20px;
     }
 
     &__name {
@@ -18,7 +19,29 @@
         line-height: 20px;
     }
 
-    &__tariffes{
+    &__floor {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &__type {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    &__modifiers {
+        margin-bottom: 20px;
+    }
+
+    &__mod {
+        font-weight: 400;
+        font-size: 14px;
+        color: #919191;
+    }
+
+    &__tariffes {
         display: flex;
         flex-direction: column;
         row-gap: 11px;
@@ -27,23 +50,42 @@
     }
 }
 
-@media screen and (min-width: 800px){
-    .hotel-deatails-room {    
+@media screen and (min-width: 800px) {
+    .hotel-deatails-room {
         &__slider {
             height: 360px;
         }
-    
+
         &__info {
             padding: 0 24px;
             margin-top: 20px;
         }
-    
+
         &__name {
             font-size: 32px;
             line-height: 40px;
         }
-    
-        &__tariffes{
+
+        &__floor {
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        &__type {
+            font-size: 24px;
+            line-height: 30px;
+        }
+
+        &__modifiers {
+            margin-bottom: 30px;
+        }
+
+        &__mod {
+            font-size: 20px;
+            color: #919191;
+        }
+
+        &__tariffes {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;

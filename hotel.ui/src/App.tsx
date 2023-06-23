@@ -12,8 +12,8 @@ function App() {
   return (
       <Routes>
         <Route path='/' element={<SearchPage />} />
-        <Route path='/hotels-list' element={<HotelsListPage />} />
-        <Route path='/hotels-list/:id' element={<HotelDeatailsPage />} />
+        <Route path='/hotels-list/:direction' element={<HotelsListPage />} />
+        <Route path='/hotel-details/:hotelId' element={<HotelDeatailsPage />} />
         <Route path='/booking' element={<BookingPage />} />
         <Route path='/booking-history' element={<BookingHistoryPage/>} />
       </Routes>

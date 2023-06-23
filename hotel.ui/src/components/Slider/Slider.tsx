@@ -10,7 +10,7 @@ function Slider({imgUrl}:{imgUrl: string[]}) {
     return (
         <div className="slider">
             {imgUrl.map((el, index) => 
-                <section className={`slider-element${activeIndex === index? ' active': ''}`} key={index}>
+                <section className={`slider-element${activeIndex === index? ' active': ''}`} key={`hotel details slider ${index}`}>
                     <img src={el} alt={`Slider ${index}`} />
                 </section>
             )}

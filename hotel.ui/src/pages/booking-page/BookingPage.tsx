@@ -7,7 +7,7 @@ import HotelsMock from "../../mocks/hotels";
 import './BookingPage.scss';
 
 function BookingPage() {
-    const { direction, checkIn, checkOut, guests, hotelId, roomId, tarriffId } = useTypedSelector(state => state.search);
+    const { direction, checkIn, checkOut, hotelId, roomId, tarriffId } = useTypedSelector(state => state.search);
     const [contacts, setContacts] = useState<BookingContactsType>({
         firstName: "",
         lastName: "",
@@ -26,18 +26,18 @@ function BookingPage() {
     });
 
     useEffect(() => {
-        const hotel = HotelsMock.find((el) => el.id === hotelId);
-        const room = hotel?.rooms?.find((el) => el.id === roomId);
-        const tariff = room?.tariffes.find((el) => el.id === tarriffId);
+        // const hotel = HotelsMock.find((el) => el.id === hotelId);
+        // const room = hotel?.rooms?.find((el) => el.id === roomId);
+        // const tariff = room?.tariffes.find((el) => el.id === tarriffId);
 
-        setInfo({
-            ...info,
-            hotelName: hotel!!.name,
-            hotelGeo: direction!!,
-            roomName: room?.name!!,
-            tags: tariff?.tags!!,
-            price: tariff?.price!!
-        });
+        // setInfo({
+        //     ...info,
+        //     hotelName: hotel!!.name,
+        //     hotelGeo: direction!!,
+        //     roomName: room?.name!!,
+        //     tags: tariff?.tags!!,
+        //     price: tariff?.price!!
+        // });
     }, []);
 
     function onChangeContacts(event: ChangeEvent<HTMLInputElement>) {

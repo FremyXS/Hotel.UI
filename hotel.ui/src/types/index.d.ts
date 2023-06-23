@@ -1,29 +1,43 @@
-export type SearchDataType = {
+export type SearchType = {
     direction: string | null,
-    checkIn: string | null, 
+    checkIn: string | null,
     checkOut: string | null,
-    guests: number | null,
+}
+
+export type ParamsDataType = {
+    direction: string | null,
+    checkIn: string | null,
+    checkOut: string | null,
     hotelId: number | null,
     roomId: number | null,
-    tarriffId: number | null
+    tarriffId: number | null,
+    HotelLatitude: number | null, 
+    HotelLongitude: number | null
 }
 
 export type HotelType = {
     id: number,
     name: string,
     rating: number,
-    minCost: number,
-    maxCost: number,
-    numberRoomsAvailable: number,
+    coordinates: {
+        longitude: number,
+        latitude: number
+    },
+    address: string,
+    city: string,
+    shortDescription: string,
+    longDescription: string,
     photos: string[],
-    rooms?: HotelRoomType[],
 }
 
 export type HotelRoomType = {
-    id: number,
-    name: string,    
-    photos: string[],
-    tariffes: HotelRoomTariffType[]
+    class: number,
+    price: number,
+    number: number,
+    state: number,
+    imageUrls: string[],
+    modifiers: string[],
+    floor: number
 }
 
 export type HotelRoomTariffType = {
@@ -59,10 +73,4 @@ export type BookingHistory = {
         name: string,
         price: number,
     }
-}
-
-export enum BookingHistoryStatus{
-    cancelled = "Бронь отменена",
-    isOver = "Время брони закончилось",
-    inMotion = "В действии"
 }

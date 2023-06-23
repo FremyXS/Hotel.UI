@@ -7,11 +7,12 @@ import './HotelDetailsInfo.scss';
 interface IHotelDetailsInfo {
     name: string,
     rating: number,
-    photos: string[]
+    photos: string[],
+    description: string
 }
 
-function HotelDetailsInfo({name, rating, photos} : IHotelDetailsInfo) {
-    return(
+function HotelDetailsInfo({ name, description, rating, photos }: IHotelDetailsInfo) {
+    return (
         <div className="hotel-details-info">
             <div className="hotel-details-info__title">
                 <div className="hotel-details-info__name">
@@ -20,7 +21,10 @@ function HotelDetailsInfo({name, rating, photos} : IHotelDetailsInfo) {
                 <StarRating value={rating} />
             </div>
             <div className="hotel-details-info__slider">
-                <Slider imgUrl={photos} />
+                {/* <Slider imgUrl={photos} /> */}
+            </div>
+            <div className="hotel-details-info__description">
+                {description}
             </div>
         </div>
     );

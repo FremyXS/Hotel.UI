@@ -2,7 +2,7 @@ import react, { ChangeEvent, useState } from 'react';
 
 import Input from '../../components/Input/Input';
 import Button from '../../components/Button/Button';
-import { SearchDataType } from '../../types';
+import { SearchType } from '../../types';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTypedSelector } from '../../halpers/useTypedSelector';
 import { useActions } from '../../halpers/useActions';
@@ -10,18 +10,14 @@ import { useActions } from '../../halpers/useActions';
 import './SearchPage.scss';
 
 function SearchPage() {
-    const {direction, checkIn, checkOut, guests} = useTypedSelector(state => state.search);
-    const {setTodoPage} = useActions();
-    
+    const { search } = useTypedSelector(state => state);
+    const { setTodoPage } = useActions();
+
     const navigate = useNavigate();
-    const [data, setData] = useState<SearchDataType>({
-        direction: direction,
-        checkIn: checkIn,
-        checkOut: checkOut,
-        guests: guests,
-        hotelId: null,
-        roomId: null,
-        tarriffId: null,
+    const [data, setData] = useState<SearchType>({
+        direction: search.direction,
+        checkIn: search.checkIn,
+        checkOut: search.checkOut,
     })
 
     function onChangeData(event: ChangeEvent<HTMLInputElement>) {
@@ -32,8 +28,8 @@ function SearchPage() {
     }
 
     function onNavigateToHostelsListPage() {
-        setTodoPage(data);
-        navigate(`hotels-list`)
+        // setTodoPage({ ...search, ...data});
+        navigate(`hotels-list/${data.direction}`)
     }
 
     return (
@@ -58,16 +54,8 @@ function SearchPage() {
                     value={data.checkOut!!}
                     name='checkOut'
                     onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeData(event)} />
-                <Input
-                    labelName='Гости'
-                    type="number"
-                    value={data.guests!!.toString()} 
-                    name='guests'
-                    onChange={(event: ChangeEvent<HTMLInputElement>) => onChangeData(event)}/>
-                {/* <SwitchGuests
-                    labelName='Гости' data={data.guests} /> */}
                 <Button type='button'
-                onClick={() => onNavigateToHostelsListPage()}
+                    onClick={() => onNavigateToHostelsListPage()}
                 >Найти</Button>
                 <Link className='search-page-window__link' to='/booking-history'>
                     Или посмотреть историю?

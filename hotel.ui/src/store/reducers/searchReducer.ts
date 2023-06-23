@@ -1,14 +1,15 @@
-import { SearchDataType } from "../../types";
+import { ParamsDataType } from "../../types";
 import { SearchAction, SearchActionTypes } from "../../types/reducers/search.d";
 
-const initialState: SearchDataType = {
+const initialState: ParamsDataType = {
     direction: "",
     checkIn: "",
     checkOut: "",
-    guests: 2,
     hotelId: null,
     roomId: null,
     tarriffId: null,
+    HotelLatitude: 0, 
+    HotelLongitude: 0
 }
 
 export const searchReducer = (state = initialState, action: SearchAction) => {

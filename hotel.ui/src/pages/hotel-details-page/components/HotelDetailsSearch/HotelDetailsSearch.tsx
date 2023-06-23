@@ -1,12 +1,12 @@
 import React, { ChangeEvent } from "react";
 import Input from '../../../../components/Input/Input';
 import Button from "../../../../components/Button/Button";
-import { SearchDataType } from "../../../../types";
+import { ParamsDataType } from "../../../../types";
 import './HotelDetailsSearch.scss';
 
 function HotelDetailsSearch({ data, onChange, onClick }: {
-    data: SearchDataType,
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void, onClick: () => void
+    data: ParamsDataType,
+    onChange?: (event: ChangeEvent<HTMLInputElement>) => void, onClick?: () => void
 }) {
     return (
         <div className="hotel-details-search">
@@ -25,12 +25,6 @@ function HotelDetailsSearch({ data, onChange, onClick }: {
                     labelName="Выезд"
                     name="checkOut"
                     value={data.checkOut!}
-                    onChange={onChange} />
-                <Input
-                    type="number"
-                    labelName="Гости"
-                    name="guests"
-                    value={data.guests ? data.guests.toString() : '0'}
                     onChange={onChange} />
             </div>
             <Button type="button"

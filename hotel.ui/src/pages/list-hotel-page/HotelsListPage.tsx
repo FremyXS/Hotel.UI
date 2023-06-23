@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { HotelType } from "../../types";
-import HotelsMock from "../../mocks/hotels";
 import HotelElement from "./components/HotelElement/HotelElement";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getAllHostels } from "../../api/gate-way";
 import './HotelsListPage.scss'
 
 function HotelsListPage() {
     const [hotelsList, setHotelsList] = useState<HotelType[]>([]);
+    const [isLoadPage, setIsLoadPage] = useState<boolean>(true);
+    const { direction } = useParams();
     const navigate = useNavigate();
 
     useEffect(() => {
-        setHotelsList(HotelsMock);
+        loadListHotelsAsync();
     }, []);
 
     function navigateToHotelDetails(hotelId: number) {
-        navigate(`${hotelId}`)
+
+        navigate(`/hotel-details/${hotelId}`)
     }
 
     return (
@@ -26,6 +29,18 @@ function HotelsListPage() {
             </div>
         </div>
     );
+
+    async function loadListHotelsAsync() {
+        const data = await getAllHostels(direction!!)
+
+        if(data === false){
+            setIsLoadPage(false)
+        }
+        else{
+            setHotelsList(data);
+        }
+
+    }
 }
 
 export default HotelsListPage;

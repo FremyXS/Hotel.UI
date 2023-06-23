@@ -1,4 +1,4 @@
-import { SearchDataType } from "../index";
+import { ParamsDataType } from "../index";
 
 export enum SearchActionTypes {
     FETCH_SEARCH = 'FETCH_SEARCH',
@@ -8,7 +8,7 @@ export enum SearchActionTypes {
 }
 interface SetSearchAction {
     type: SearchActionTypes.SET_SEARCH;
-    payload: SearchDataType;
+    payload: ParamsDataType;
 }
 
 interface FetchSearchAction {
@@ -20,6 +20,6 @@ interface FetchSearchSuccessAction {
 }
 interface FetchSearchErrorAction {
     type: SearchActionTypes.FETCH_SEARCH_ERROR;
-    payload: SearchDataType;
+    payload: ParamsDataType;
 }
 export type SearchAction = SetSearchAction | FetchSearchAction | FetchSearchErrorAction | FetchSearchSuccessAction

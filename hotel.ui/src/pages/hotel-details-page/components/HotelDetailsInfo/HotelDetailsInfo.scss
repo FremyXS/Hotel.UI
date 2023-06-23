@@ -1,5 +1,7 @@
 .hotel-details-info {
     background-color: #fff;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
     &__title{
         padding: 0 10px;
     }
@@ -14,10 +16,17 @@
         margin-top: 10px;
         height: 200px;
     }
+
+    &__description{        
+        font-weight: 400;
+        font-size: 16px;
+        padding: 0 10px;
+    }
 }
 
 @media screen and (min-width: 800px) {
     .hotel-details-info {
+        margin-bottom: 20px;
         &__title{
             padding: 0 20px;
         }
@@ -29,6 +38,11 @@
         &__slider {
             margin-top: 20px;
             height: 400px;
+        }
+        &__description{        
+            font-weight: 400;
+            font-size: 32px;
+            padding: 0 20px;
         }
     }
 }

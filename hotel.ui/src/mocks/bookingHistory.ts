@@ -3,7 +3,6 @@ import { BookingHistory } from "../types";
 enum BookingHistoryStatus{
     cancelled = "Бронь отменена",
     isOver = "Время брони закончилось",
-    inMotion = "В действии"
 }
 
 enum BookingCurrentStatus{
